@@ -1,0 +1,30 @@
+.card:hover img {
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+  }
+  
+.card:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+  }
+  
+.card, .card-body, .btn, .text-body-secondary {
+    color: white;
+    background-color: transparent;
+    background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+body {
+    background-color: black;
+  }
+  
+

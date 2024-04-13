@@ -1,0 +1,26 @@
+{% extends "home/base.html" %}
+
+{% block title %}
+Movimax
+{% endblock %}
+{%  block main %}
+
+<div class="position-absolute top-50 start-50 translate-middle">
+    <div class="rainbow-text" style="text-align: center;">
+        <div class="rainbow-text" style="text-align: center;">
+        <span class="block-line" style="font-size:10vw"><span><span style="color:#F66C1C;">M</span><span style="color:#FE4838;">o</span><span style="color:#FB295B;">v</span><span style="color:#ED1180;">i</span><span style="color:#D504A6;">m</span><span style="color:#B601C8;">a</span><span style="color:#910AE3;">x</span></span></span>
+    </div>
+    <div class="row">
+    <form action="/search/" method="get" class="g-2" >
+        <div class="mx-auto">
+            <div class="col">
+                <input type="text" class="form-control rounded-pill" name="q" placeholder="Search Query">
+              </div>    
+        <div class="col">
+            <button type="submit" style="background-color:#910AE3;" class="btn mt-4 text-light rounded-pill">Search</button>
+        </div>
+    </div>
+    </form>
+    <div>
+</div>
+{% endblock %}

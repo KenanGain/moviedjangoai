@@ -1,0 +1,26 @@
+{% extends "home/base.html" %}
+
+{% block title %}
+Result 
+{% endblock %}
+
+{% block main %}
+    <h1 class="text-light">Showing Results for "{{ query }}"</h1>
+    {% for movie_group in results %}
+        {% if forloop.counter0|add:forloop.counter0|add:forloop.counter0 < 18 %}
+            <div class="row w-auto">
+                {% for m in movie_group %}
+                    <div class="card shadow-lg rounded bg-secondary text-white glass-effect" style="width: 18rem; margin: 10px ">
+                        <img src="https://image.tmdb.org/t/p/original/{{ m.poster }}" class="img-fluid card-img-top mt-2 bg-body-tertiary rounded " alt="...">
+                        <div class="card-body opacity-75 ">
+                            <h3 class="card-title" >{{ m.name }}</h3>
+                            <p class="card-text">{{ m.overview }}</p>
+                            <p class="card-text"><small class="text-light">Release Date: {{ m.releasedate }}</small></p>
+                            <a href="/movie/{{ m.id }}" class="btn btn-primary">Movie Link</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "home/base.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block main %}
+<h1>Login</h1>
+<form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+
+    <!-- Display error message if there is one -->
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <div class="mb-3 row">
+        <label for="username" class="col-sm-2 col-form-label">Username</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Your username">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Your password">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+{% endblock %}

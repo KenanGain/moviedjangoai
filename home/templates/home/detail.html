@@ -1,0 +1,74 @@
+{% extends "home/base.html" %}
+
+{% block title %}
+Movimax
+{% endblock %}
+
+
+{% block main %}
+<h1>{{ data.title }}</h1>
+<img src="https://image.tmdb.org/t/p/w200{{ data.poster_path }}" alt="{{ data.name }}">
+<h3>{{ data.tagline }}</h3>
+<h2>Review</h2>
+<a href="/movie/{{ id }}/review/">
+<img width="50" height="50" src="https://img.icons8.com/ios/50/thumbs-up-down.png" alt="thumbs-up-down"/>Reviews</a>
+<h2>Ai generated Description</h2>
+<p>{{ ai_summary }}</p>
+{% comment %} <h2>Description from Wikipedia:</h2> {% endcomment %}
+{% comment %} <P> {{ wiki_summary.extract }} </p> {% endcomment %}
+{% comment %} <P> {{ wiki_summary2.extract }} </p> {% endcomment %}
+<h2 class="g1">Cast</h2>
+    <ul>
+        {% for c in cast %}
+            <li>{{ c.name }}</li>
+            <img src="https://image.tmdb.org/t/p/w200{{ c.image_url }}" alt="{{ company.name }}">
+        {% endfor %}
+    </ul>
+<h2>Production</h2>
+{% if data.production_companies %}
+    {% with company=data.production_companies.0 %}
+        <h3>{{ company.name }}</h3>
+        <img src="https://image.tmdb.org/t/p/w200{{ company.logo_path }}" alt="{{ company.name }}">
+    {% endwith %}
+{% endif %}
+<h2>Release Date</h2>
+<ul>
+        <li>{{ data.release_date }} </li>
+</ul>
+
+<h2>Languages</h2>
+<ul>
+        <li>{{ data.original_language }}</li>
+</ul>
+<h2 class="g1">Genres</h2>
+<ul>
+    {% for g in data.genres %}
+        <li>{{ g.name }}</li>
+    {% endfor %}
+</ul>
+<h2>Runtime</h2>
+<ul>
+        <li>{{ data.runtime }} minutes</li>
+</ul>
+<h2>Revenue</h2>
+<ul>
+        <li>{{ revenue }} $</li>
+</ul>
+<h2>Moviegenx Recommandation:</h2>
+<div class="row w-auto">
+{% for movie in moviegenxrec %}
+<div class="card shadow-lg rounded bg-secondary text-white glass-effect" style="width: 18rem; margin: 10px ">
+        <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="card-img-top" alt="{{ movie.title }}">
+        <div class="card-body  opacity-75">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <p class="card-text">{{ movie.overview | truncatewords:30 }}</p>
+            <p class="card-text"><small class="text-light">Release Date: {{ movie.release_date }}</small></p>
+            <a href="/movie/{{ movie.id }}" class="btn btn-primary">More Details</a>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+<!-- Back Button -->
+<button onclick="history.back()" class="btn btn-secondary">Go Back</button>
+{% endblock %}

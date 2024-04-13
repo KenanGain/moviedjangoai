@@ -1,0 +1,22 @@
+{% extends "home/base.html" %}
+
+{% block title %}
+Review
+{% endblock %}
+{%  block main %}
+<h1>Review Page for {{ title }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for ='review'>Feedback</label>
+            <textarea class="form-control" id="review" name="review" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Feedback</button>
+    </form>
+    {% for r in review %} 
+    <div>
+        {{ r.user.username }} on {{ r.created_at }} said: <br> {{ r.review }}
+    </div>
+    <br>
+    {% endfor %}
+{% endblock %}
