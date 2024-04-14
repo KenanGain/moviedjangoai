@@ -125,7 +125,7 @@ def view_detail(request, id):
             "you are an amazing AI assistant which only provides good movie descriptions using this knowledge base: "
             + " ".join([title, tmdb_data.get("overview", "")] + wiki_responses + [str(revenue)])
         )
-        openaiapi_key = "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"
+        # openaiapi_key = "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"
         ai_summary = openai(openaiapi_key,prompt)
     return render(request, 'home/detail.html', {
                 "data": tmdb_data,

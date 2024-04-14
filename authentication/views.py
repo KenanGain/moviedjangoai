@@ -19,7 +19,7 @@ def register(request):
         # If the username does not exist, create the user
         user = User.objects.create_user(username=username, email=email, password=password)
         login(request, user)
-        return redirect('home')  # Redirect to a home page or another appropriate page
+        return render(request, "home/index.html")  # Redirect to a home page or another appropriate page
 
     else:
         return render(request, "authentication/register.html")
